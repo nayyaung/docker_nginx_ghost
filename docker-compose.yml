@@ -1,0 +1,16 @@
+version: '3.3'
+
+services:
+  blog:
+    image: ghost
+    container_name: ghost_blog
+    environment:
+      url: http://your-blog-name.com
+  nginx: 
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    ports:
+      - 80:80
+    depends_on:
+      - blog
